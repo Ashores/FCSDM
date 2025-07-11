@@ -97,12 +97,7 @@ FCSDM achieves superior generative performance compared to state-of-the-art meth
 If you use this code in your research, please cite:
 
 ```bibtex
-@article{fcsdm2024,
-  title={Continual Unsupervised Generative Modeling via Feature Causality-based Selection Dynamic Memory},
-  author={Your Name},
-  journal={Conference/Journal Name},
-  year={2024}
-}
+
 ```
 
 ## License
