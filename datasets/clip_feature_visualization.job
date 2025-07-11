@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+#SBATCH --job-name=clip_feature_visualization       # Job name
+#SBATCH --nodes=1                       # Number of nodes
+#SBATCH --ntasks=1                      # Number of MPI tasks to request
+#SBATCH --cpus-per-task=32               # Number of CPU cores per MPI task
+#SBATCH --mem=64G                      # Total memory to request
+#SBATCH --time=1-00:00:00               # Time limit (DD-HH:MM:SS)
+#SBATCH --account=cs-ecvdl-2019         # Project account to use
+#SBATCH --mail-type=END,FAIL            # Mail events (NONE, BEGIN, END, FAIL, ALL)
+#SBATCH --mail-user=taowiiii@york.ac.uk   # Where to send mail
+#SBATCH --output=%x-%j.log              # Standard output log
+#SBATCH --error=%x-%j.err               # Standard error log
+#SBATCH --partition=gpuplus             # Which partition to use
+#SBATCH --gres=gpu:1                    # Generic resources required per node
+#SBATCH --exclude=gpu24                 # Exclude gpu23 node
+
+# Abort if any command fails
+set -e
+
+# purge any existing modules
+module purge
+
+# Commands to run
+
+module load Miniconda3/23.5.2-0
+source activate
+
+conda activate /mnt/scratch/users/rnt529/DCM/users/rnt529/scratch/conda_environments/envs/CLLL
+
+cd /users/rnt529/scratch/DCM/datasets/
+
+srun python -u clip_feature_visualization.py
